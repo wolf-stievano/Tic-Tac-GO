@@ -35,6 +35,16 @@ func (b *Board) makeMove(move int, player string) bool {
 	return true
 }
 
+func (b Board) checkWin(player string) bool {
+	//verificacao horizontal
+	for i := 0, i < boardSize, i++ {
+		if b[i][0] == player && b[i][1] == player && b[i][2] == player {
+			return true
+		} 
+	}
+	return false
+}
+
 func main() {
 	board := Board{
 		{empty, empty, empty},
@@ -58,6 +68,11 @@ func main() {
 			fmt.Println("Posição já ocupada ou inválida. tente novamente.")
 			continue
 		}
+
+		if board.checkWin(player) {
+			fmt.Println("Jogador %s venceu!\n", player)
+			break
+		}
 		
 		if player == "X" {
 			player = "O"
@@ -68,4 +83,3 @@ func main() {
 
 }
 
-// nao quero fazer isto daqui
