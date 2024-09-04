@@ -36,13 +36,37 @@ func (b *Board) makeMove(move int, player string) bool {
 }
 
 func (b Board) checkWin(player string) bool {
-	//verificacao horizontal
-	for i := 0, i < boardSize, i++ {
+	for i := 0; i < boardSize; i++ {
 		if b[i][0] == player && b[i][1] == player && b[i][2] == player {
 			return true
 		} 
 	}
+
+	for j := 0; j < boardSize; j++ {
+		if b[0][j] == player && b[1][j] == player && b[2][j] == player {
+			return true
+		}
+	}
+
+	if b[0][0] == player && b[1][1] == player && b[2][2] == player {
+		return true
+	}
+
+	if b[0][2] == player && b[1][1] == player && b[2][0] == player {
+		return true
+}
 	return false
+}
+
+func (b Board) isFull() bool {
+	for i := 0; i < boardSize; i++ {
+		for j := 0; j < boardSize; j++ {
+			if b[i][j] == empty {
+				return false
+			}
+		}
+	}
+	return true
 }
 
 func main() {
@@ -70,7 +94,12 @@ func main() {
 		}
 
 		if board.checkWin(player) {
-			fmt.Println("Jogador %s venceu!\n", player)
+			fmt.Printf("Jogador %s venceu!\n", player)
+			break
+		}
+
+		if board.isFull() {
+			fmt.Println("O jogo empatou!")
 			break
 		}
 		
