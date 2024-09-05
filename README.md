@@ -43,13 +43,8 @@ go build
 After building the project, you can start the game by running:
 
 ```bash
-./Tic-Tac-GO
+go run Tic-Tac-GO.go
 ```
-## Future Plans
-
-- **AI Opponent:** Implement a computer opponent with different levels of difficulty.
-- **Online Multiplayer:** Enable online play so you can challenge friends or players around the world.
-- **Enhanced UI:** Although terminal-based, improvements in user interface can enhance gameplay clarity.
 
 ## Contributing
 
